@@ -29,7 +29,14 @@ func (s String) Length() int {
 	return len(s)
 }
 
+func (s String) Empty() bool {
+	return len(s) == 0
+}
+
 func (s String) HasLettersOnly() bool {
+	if len(s) == 0 {
+		return false
+	}
 	for _, c := range string(s) {
 		if !isLetter(c) {
 			return false
@@ -39,6 +46,9 @@ func (s String) HasLettersOnly() bool {
 }
 
 func (s String) HasDigitsOnly() bool {
+	if len(s) == 0 {
+		return false
+	}
 	for _, c := range string(s) {
 		if !isDigit(c) {
 			return false
