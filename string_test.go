@@ -19,4 +19,12 @@ func TestString_HasDigitsOnly(t *testing.T) {
 		assert.False(t, String("").HasDigitsOnly())
 		assert.True(t, String("").Empty())
 	})
+
+	t.Run("int", func(t *testing.T) {
+		assert.Equal(t, String("1").Int(), 1)
+
+		assert.Equal(t, String("42").Int(), 42)
+
+		assert.Equal(t, String("-7").Int(), -7)
+	})
 }

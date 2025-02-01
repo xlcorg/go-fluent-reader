@@ -1,6 +1,7 @@
 package fluent_reader
 
 import (
+	"strconv"
 	"unicode"
 	"unicode/utf8"
 )
@@ -55,6 +56,22 @@ func (s String) HasDigitsOnly() bool {
 		}
 	}
 	return true
+}
+
+func (s String) Int() int {
+	result, err := strconv.Atoi(string(s))
+	if err != nil {
+		panic(err)
+	}
+	return result
+}
+
+func (s String) Int64() int64 {
+	result, err := strconv.ParseInt(string(s), 10, 64)
+	if err != nil {
+		panic(err)
+	}
+	return result
 }
 
 func isLetter(c rune) bool {
